@@ -8,7 +8,7 @@ TARGET   := main
 INCLUDE  := -Iinclude/
 SRC      := $(wildcard src/*.cpp)
 
-LIBS := libutil
+LIBS := util
 LIBS_DIR := ../util_lib/build/libs/
 INCLUDE += -I../util_lib/include/
 LDFLAGS += -L$(LIBS_DIR) -l$(LIBS)
