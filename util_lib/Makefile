@@ -1,7 +1,7 @@
 CXX      := clang++
 CXXFLAGS := -pedantic-errors -Wall -Wextra -fPIC -std=c++23
 LDFLAGS	 := -shared
-BUILD    := ./build
+BUILD    := build
 OBJ_DIR  := $(BUILD)/objects
 LIB_DIR  := $(BUILD)/libs
 TARGET   := libutil.so
@@ -19,7 +19,7 @@ $(OBJ_DIR)/%.o: %.cpp
 
 $(LIB_DIR)/$(TARGET): $(OBJECTS)
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -o $(LIB_DIR)/$(TARGET) $^ $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o $(shell pwd)/$(LIB_DIR)/$(TARGET) $^ $(LDFLAGS)
 
 -include $(DEPENDENCIES)
 
