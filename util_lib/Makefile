@@ -19,7 +19,8 @@ $(OBJ_DIR)/%.o: %.cpp
 
 $(LIB_DIR)/$(TARGET): $(OBJECTS)
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -o $(shell pwd)/$(LIB_DIR)/$(TARGET) $^ $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o $(LIB_DIR)/$(TARGET) $^ $(LDFLAGS) -Wl,-install_name,'@executable_path/../../../util_lib/$(LIB_DIR)/$(TARGET)' # solution with @executable_path
+# 	$(CXX) $(CXXFLAGS) -o $(shell pwd)/$(LIB_DIR)/$(TARGET) $^ $(LDFLAGS) # solution with absolute path
 
 -include $(DEPENDENCIES)
 
