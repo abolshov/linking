@@ -11,8 +11,9 @@ SRC      := $(wildcard src/*.cpp)
 LIBS := util
 LIBS_DIR := ../util_lib/build/libs/
 INCLUDE += -I../util_lib/include/
+LDFLAGS += -L$(LIBS_DIR) -l$(LIBS) -Wl,-rpath,'@executable_path'
 # LDFLAGS += -L$(LIBS_DIR) -l$(LIBS) -Wl,-rpath,/Users/artembolshov/Desktop/Programming/test/cpp/linking/util_lib/build/libs/ # solution with abs path
-LDFLAGS += -L$(LIBS_DIR) -l$(LIBS) # solution with @executable_path
+# LDFLAGS += -L$(LIBS_DIR) -l$(LIBS) # solution with @executable_path
 
 OBJECTS  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 DEPENDENCIES := $(OBJECTS:.o=.d)
